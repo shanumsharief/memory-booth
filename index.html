@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2D120D" />
+  <meta name="description" content="Memory Booth — a little camera for making a moment into a keepsake." />
+  <title>Memory Booth — Make a memory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="curtain-transition" id="curtainTransition" aria-hidden="true">
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
+    <span class="curtain-title">memory booth</span>
+  </div>
+  <div class="site-shell" id="top">
+    <div class="paper-speckles" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Memory Booth home">
+        <span class="wordmark-mark" aria-hidden="true">✦</span>
+        <span class="wordmark-type">memory<br /><em>booth</em></span>
+      </a>
+      <nav class="scrap-nav" aria-label="Main navigation">
+        <a href="#top" class="nav-tab active">home</a>
+        <a href="#booth" class="nav-tab">photo booth</a>
+        <a href="#album" class="nav-tab">the album</a>
+        <a href="#about" class="nav-tab">about</a>
+      </nav>
+      <span class="header-note">est. whenever<br />you felt like it</span>
+    </header>
+
+    <main>
+      <section class="hero spread-section" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">a tiny place for big little moments</p>
+          <h1 id="hero-title">Let’s make<br /><span>a memory.</span></h1>
+          <p class="hero-deck">Four little flashes, one thing to keep.<br />No perfect posing required.</p>
+          <div class="hero-annotation" aria-hidden="true"><span class="note-rule"></span><span>keep this one<br />forever ♡</span></div>
+          <button class="paper-button hero-cta" data-open-booth>
+            <span>take a photo</span>
+          </button>
+          <p class="micro-copy">camera stays in your browser · nothing leaves the page</p>
+        </div>
+
+      </section>
+
+      <section class="booth-section spread-section" id="booth" aria-labelledby="booth-title">
+        <div class="section-heading with-rule">
+          <div>
+            <p class="eyebrow">page two · behind the curtain</p>
+            <h2 id="booth-title">Step inside<br /><em>the little booth.</em></h2>
+          </div>
+          <p class="heading-aside">Find a patch of good light.<br />Bring your favorite person.<br />Or just bring yourself.</p>
+        </div>
+
+        <div class="booth-layout">
+          <aside class="booth-margin-note">
+            <div class="label-sticker">PHOTO<br />BOOTH</div>
+            <p class="hand-copy">ready when<br /><span>you are <i class="inline-arrow" aria-hidden="true"></i></span></p>
+            <span class="margin-line"></span>
+            <p class="tiny-type">use the shutter<br />when the light turns red</p>
+          </aside>
+
+          <div class="booth-machine" aria-label="Interactive photo booth">
+            <div class="machine-header"><span class="machine-title">MEMORY BOOTH</span><span class="machine-lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="machine-number">04 / 04</span></div>
+            <div class="camera-window">
+              <video id="cameraVideo" playsinline autoplay muted aria-label="Live camera preview"></video>
+              <div class="camera-placeholder" id="cameraPlaceholder">
+                <span class="placeholder-aperture">✺</span>
+                <strong>the booth is waiting</strong>
+                <small>allow camera access, then make a strip</small>
+              </div>
+              <div class="camera-frame-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              <div class="countdown" id="countdown" aria-live="assertive"></div>
+              <div class="camera-flash" id="cameraFlash" aria-hidden="true"></div>
+              <div class="camera-status-pill" id="cameraStatusPill">camera sleeping</div>
+            </div>
+            <div class="machine-footer">
+              <div class="booth-status" id="boothStatus" role="status" aria-live="polite">Your photographs will be processed right here, in your browser.</div>
+              <div class="booth-controls">
+                <button class="machine-button secondary" id="startCameraButton" type="button"><span>open the curtain</span><b class="corner-arrow" aria-hidden="true"></b></button>
+                <button class="shutter-button" id="shutterButton" type="button" disabled aria-label="Make a four-photo strip"><span class="shutter-inner"></span></button>
+                <span class="shutter-label">make<br />a strip</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="booth-side-note">
+            <div class="receipt">
+              <p class="receipt-title">A SMALL REMINDER</p>
+              <p>There is no wrong<br />side of the camera.</p>
+              <span class="receipt-rule"></span>
+              <p class="receipt-small">sound on if you like<br />the tiny click</p>
+            </div>
+            <div class="doodle-note" aria-hidden="true">this is<br />the good bit</div>
+          </aside>
+        </div>
+
+        <div class="result-panel" id="resultPanel" hidden>
+          <div class="result-copy">
+            <p class="eyebrow">fresh from the booth</p>
+            <h3>Keep the little<br /><em>proof.</em></h3>
+            <p>It’s yours. Download it for your fridge, your wallet, or the camera roll you swear you’ll organize someday.</p>
+            <div class="style-studio" aria-label="Customize your photo strip">
+              <div class="studio-row">
+                <span class="studio-label">ink & tone</span>
+                <div class="studio-options" id="filterOptions" role="group" aria-label="Choose a vintage photo treatment">
+                  <button class="studio-chip active" type="button" data-filter="keepsake">keepsake</button>
+                  <button class="studio-chip" type="button" data-filter="dusty-rose">dusty rose</button>
+                  <button class="studio-chip" type="button" data-filter="olive-film">olive film</button>
+                  <button class="studio-chip" type="button" data-filter="faded-ink">faded ink</button>
+                </div>
+              </div>
+              <div class="studio-row">
+                <span class="studio-label">little sticker</span>
+                <div class="studio-options" id="stickerOptions" role="group" aria-label="Choose a photo strip sticker">
+                  <button class="studio-chip active" type="button" data-sticker="star">✦ star</button>
+                  <button class="studio-chip" type="button" data-sticker="heart">♡ heart</button>
+                  <button class="studio-chip" type="button" data-sticker="flower">✿ flower</button>
+                  <button class="studio-chip" type="button" data-sticker="stamp">postal stamp</button>
+                  <button class="studio-chip" type="button" data-sticker="none">none</button>
+                </div>
+              </div>
+            </div>
+            <div class="result-actions">
+              <a class="paper-button download-button" id="downloadButton" href="#" download="memory-booth-strip.png"><span>download strip</span><span class="download-mark" aria-hidden="true"></span></a>
+              <button class="text-button" id="retakeButton" type="button">retake the photos</button>
+            </div>
+            <div class="print-studio">
+              <div>
+                <p class="studio-label">physical print layout</p>
+                <p class="print-note">Make a little page of keepsakes — ready to trim and tuck into an album.</p>
+              </div>
+              <label class="print-select-label" for="printCopies">strips on one page
+                <select id="printCopies">
+                  <option value="1">1 · one-up</option>
+                  <option value="2">2 · two-up</option>
+                  <option value="4" selected>4 · classic four-up</option>
+                </select>
+              </label>
+              <a class="paper-button print-button" id="printDownloadButton" href="#" download="memory-booth-print-sheet.png"><span>download print sheet</span><span class="download-mark" aria-hidden="true"></span></a>
+            </div>
+          </div>
+          <div class="strip-presenter">
+            <div class="result-tape"></div>
+            <img id="resultImage" alt="Your finished four-photo memory strip" />
+            <span class="result-caption">made just now · keep close</span>
+          </div>
+        </div>
+        <div class="album-cta-wrap">
+          <a class="paper-button album-cta" href="#album"><span>see your album</span><span class="album-cta-mark" aria-hidden="true"></span></a>
+          <span class="album-cta-note">the little proofs are waiting below</span>
+        </div>
+        <canvas id="captureCanvas" hidden></canvas>
+      </section>
+
+      <section class="album-section spread-section" id="album" aria-labelledby="album-title">
+        <div class="album-header">
+          <div>
+            <p class="eyebrow">page three · things worth keeping</p>
+            <h2 id="album-title">The <em>album.</em></h2>
+          </div>
+          <p class="album-intro">A few scraps from a life<br />that is still happening.</p>
+          <span class="album-count" id="albumCount">03 memories</span>
+        </div>
+        <div class="album-stage">
+          <article class="album-card starter-memory card-one">
+            <div class="tape tape-card-one"></div>
+            <div class="album-photo photo-one"><span>summer, maybe</span><b>✳</b></div>
+            <div class="album-card-footer"><span>somewhere warm</span><span>06 / 18 / 84</span></div>
+            <p class="card-scribble">laughing too hard<br />to stay still</p>
+          </article>
+          <article class="album-card starter-memory card-two">
+            <div class="stamp-small">KEEP<br />THIS</div>
+            <div class="album-photo photo-two"><span>the long way home</span><b>♡</b></div>
+            <div class="album-card-footer"><span>eastbound</span><span>11 / 02 / 79</span></div>
+            <p class="card-scribble">not lost.<br />just looking.</p>
+          </article>
+          <article class="album-card starter-memory card-three">
+            <div class="tape tape-card-three"></div>
+            <div class="album-photo photo-three"><span>after the rain</span><b>✦</b></div>
+            <div class="album-card-footer"><span>back steps</span><span>03 / 07 / 88</span></div>
+            <p class="card-scribble">we stayed<br />for one more</p>
+          </article>
+          <div class="film-negative" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          <div class="album-note">A photo is a<br />small door<br />back to a day.</div>
+          <div class="coffee-ring ring-album" aria-hidden="true"></div>
+          <div class="album-sparkle" aria-hidden="true">✧</div>
+          <div class="saved-album-items" id="savedAlbumItems"></div>
+        </div>
+      </section>
+
+      <section class="about-section spread-section" id="about" aria-labelledby="about-title">
+        <div class="about-paper">
+          <div class="about-tape"></div>
+          <div class="about-copy">
+            <p class="eyebrow">a note tucked between the pages</p>
+            <h2 id="about-title">Some moments<br />are too good to<br /><em>leave in the camera roll.</em></h2>
+            <p>Memory Booth is a small, quiet corner for the unplanned bits: the crooked grin, the sleeve pulled over a hand, the friend who made you laugh just before the flash.</p>
+            <p>Make a strip. Keep the proof. Come back whenever you need to remember that you were there.</p>
+            <p class="signed-note">with love,<br /><span>the little booth</span></p>
+          </div>
+          <div class="about-marginalia">P.S.<br /><span>you looked<br />nice today</span></div>
+          <div class="about-flower" aria-hidden="true">✿</div>
+          <div class="about-negative" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>memory booth / made for the moments between moments</span>
+      <a href="#top">back to the beginning ↑</a>
+      <span>no accounts · no uploads · just a camera</span>
+    </footer>
+  </div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
